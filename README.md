@@ -46,10 +46,31 @@ This makes the project a compact demo of:
 
 ---
 
+## Quickstart
+
+### 1. Run locally in mock mode
+
+No API keys are required for your first run.
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -e ".[dev]"
+python run.py
+
+
 ## Core features
 
 - **Language selection**
   - Choose from supported target languages mapped to Deepgram Aura voices.
+  Current target languages:
+   - English (`en`)
+   - Spanish (`es`)
+   - German (`de`)
+   - French (`fr`)
+   - Dutch (`nl`)
+   - Italian (`it`)
+   - Japanese (`ja`)
 
 - **Turn-based voice interaction**
   - Record one learner turn at a time from the browser.
@@ -78,6 +99,7 @@ This makes the project a compact demo of:
 ---
 
 ## System architecture
+<img width="1779" height="326" alt="mermaid-diagram" src="https://github.com/user-attachments/assets/af8e295f-9164-4b24-917f-92972c32d2b4" />
 
 ### Frontend
 A lightweight browser interface built from:
