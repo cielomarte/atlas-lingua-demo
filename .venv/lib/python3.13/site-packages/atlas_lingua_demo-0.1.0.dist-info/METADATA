@@ -1,0 +1,85 @@
+Metadata-Version: 2.4
+Name: atlas-lingua-demo
+Version: 0.1.0
+Summary: Deepgram + OpenAI language tutor demo with a cartographer UI
+Author: OpenAI
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: fastapi<1,>=0.115
+Requires-Dist: uvicorn[standard]<1,>=0.30
+Requires-Dist: jinja2<4,>=3.1
+Requires-Dist: httpx<1,>=0.27
+Requires-Dist: pydantic<3,>=2.8
+Requires-Dist: pydantic-settings<3,>=2.4
+Requires-Dist: python-multipart<1,>=0.0.9
+Requires-Dist: websockets<16,>=13
+Provides-Extra: dev
+Requires-Dist: pytest<9,>=8; extra == "dev"
+Requires-Dist: pytest-asyncio<1,>=0.23; extra == "dev"
+
+# Atlas Lingua
+
+Atlas Lingua is a FastAPI demo that showcases:
+
+- Deepgram STT for English turn transcription (record-then-upload in the browser by default)
+- OpenAI Responses API for translation and tutor turn generation
+- Deepgram Aura for target-language TTS
+- Deepgram Text Intelligence for conversation summary and topic detection
+
+It also includes a full mock mode so the app can be demonstrated without API keys.
+
+## Features
+
+- Target-language selector using Deepgram Aura-supported languages
+- English speech input with one-turn microphone recording and upload
+- Translated learner utterance in the chosen language
+- Pronunciation playback for translated learner utterance
+- Tutor continuation in the target language with English hint
+- Teacher note and vocabulary extraction per turn
+- End-session summary and topic-detection buttons
+- Typed-turn fallback for environments without microphone access
+- Cartographer-inspired parchment UI
+
+## Quick start
+
+```bash
+cd atlas_lingua_demo
+python -m venv .venv
+source .venv/bin/activate
+pip install -e ".[dev]"
+cp .env.example .env
+uvicorn app.main:create_app --factory --reload
+```
+
+Open <http://127.0.0.1:8000>.
+
+## Modes
+
+### Mock mode
+
+If `MOCK_MODE=true` or either API key is missing, the application runs fully offline using canned transcripts and responses.
+
+### Live mode
+
+Set:
+
+- `DEEPGRAM_API_KEY`
+- `OPENAI_API_KEY`
+- `MOCK_MODE=false`
+
+Then restart the app. In live mode, the browser records one turn at a time with `MediaRecorder`, uploads the audio to the backend, the backend transcribes it with Deepgram pre-recorded STT, then OpenAI generates the translated learner line and tutor response, and Deepgram Aura synthesizes the playback audio.
+
+## Notes
+
+- A websocket Flux turn route is still included for experimentation, but the default browser experience uses record-then-upload because it is more reliable for local demos.
+- Aura voices are configured for English, Spanish, German, French, Dutch, Italian, and Japanese.
+- Summary and topic detection run on the English transcript assembled from the session.
+- Audio files returned by Deepgram are stored under `runtime_media/`.
+
+## Test
+
+```bash
+pytest
+```
+
+The tests run in mock mode and cover both REST flows and websocket turn handling.

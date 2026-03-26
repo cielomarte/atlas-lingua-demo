@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ page_title }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', path='css/styles.css') }}" />
+  </head>
+  <body>
+    <div class="background-frame"></div>
+    <main class="shell">
+      <aside class="control-panel parchment-card">
+        <div class="branding-block">
+          <div class="eyebrow">Cartographer's voice atlas</div>
+          <h1>{{ settings.app_name }}</h1>
+          <p class="tagline">{{ settings.app_tagline }}</p>
+          <div class="status-row">
+            <span id="modeChip" class="chip chip-soft">Mode</span>
+            <span id="statusChip" class="chip">Idle</span>
+          </div>
+        </div>
+
+        <section class="control-section">
+          <h2>Session settings</h2>
+          <label class="field">
+            <span>Target language</span>
+            <select id="languageSelect"></select>
+          </label>
+          <label class="field">
+            <span>Difficulty</span>
+            <select id="difficultySelect">
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
+            </select>
+          </label>
+          <div class="button-row stacked">
+            <button id="startSessionButton" class="btn btn-primary">Start new session</button>
+            <button id="endSessionButton" class="btn btn-secondary" disabled>End session</button>
+          </div>
+          <p id="sessionMeta" class="subtle-text">No active session.</p>
+        </section>
+
+        <section class="control-section">
+          <h2>Speak in English</h2>
+          <div class="button-row stacked">
+            <button id="recordButton" class="btn btn-accent" disabled>Start recording</button>
+            <button id="stopButton" class="btn btn-secondary" disabled>Finish turn</button>
+          </div>
+          <p id="liveTranscript" class="live-transcript">Waiting for your next utterance…</p>
+          <p class="subtle-text">Use the microphone to record one English turn, then upload it for transcription. The typed fallback below is useful for demos, tests, or restricted browser environments.</p>
+        </section>
+
+        <section class="control-section">
+          <h2>Typed fallback</h2>
+          <label class="field">
+            <span>English input</span>
+            <textarea id="typedInput" rows="4" placeholder="Type what the learner says in English."></textarea>
+          </label>
+          <button id="sendTypedButton" class="btn btn-secondary" disabled>Send typed turn</button>
+        </section>
+
+        <section class="control-section">
+          <h2>Session intelligence</h2>
+          <div class="button-row stacked">
+            <button id="summaryButton" class="btn btn-secondary" disabled>Summarize conversation</button>
+            <button id="topicsButton" class="btn btn-secondary" disabled>Detect topic</button>
+          </div>
+          <div id="summaryBox" class="intelligence-box">Summary will appear here after the session is ended.</div>
+          <div id="topicsBox" class="intelligence-box">Topics will appear here after detection runs.</div>
+        </section>
+      </aside>
+
+      <section class="main-panel parchment-card">
+        <header class="hero-banner">
+          <div>
+            <div class="eyebrow">Map the conversation</div>
+            <h2>WELCOME TO THE POLYGLOT EXPRESS</h2>
+            <p>Each turn is charted with translated text, pronunciation playback, and a tutor continuation.</p>
+          </div>
+          <div class="compass-medallion" aria-hidden="true">
+            <div class="compass-center"></div>
+          </div>
+        </header>
+
+        <section class="legend-grid">
+          <article class="legend-card">
+            <span class="legend-title">1. Learner speaks</span>
+            <p>Deepgram STT transcribes the recorded English turn.</p>
+          </article>
+          <article class="legend-card">
+            <span class="legend-title">2. Translate + tutor</span>
+            <p>OpenAI returns structured translation and a short response.</p>
+          </article>
+          <article class="legend-card">
+            <span class="legend-title">3. Hear it aloud</span>
+            <p>Deepgram Aura provides target-language speech output.</p>
+          </article>
+        </section>
+
+        <section class="conversation-section">
+          <div class="section-header">
+            <h3>Conversation log</h3>
+            <p id="turnCounter">0 turns recorded</p>
+          </div>
+          <div id="timeline" class="timeline">
+            <article class="timeline-placeholder parchment-card inner-card">
+              <h4>Your journey begins here</h4>
+              <p>Start a session, then speak in English or use the typed fallback. Each turn will be translated and extended by the tutor.</p>
+            </article>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script id="bootstrap-data" type="application/json">{{ bootstrap_json | safe }}</script>
+    <script type="module" src="{{ url_for('static', path='js/app.js') }}"></script>
+  </body>
+</html>
