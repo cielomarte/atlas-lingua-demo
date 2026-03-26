@@ -1,1 +1,32 @@
+# secrets
 .env
+.env.local
+.env.*.local
+
+# python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# virtualenvs
+.venv/
+venv/
+
+# packaging/build
+build/
+dist/
+*.egg-info/
+
+# runtime artifacts
+runtime_media/
+tmp/
+uploads/
+
+# editor/os
+.DS_Store
+.vscode/
+.idea/
