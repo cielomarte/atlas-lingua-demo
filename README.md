@@ -1,6 +1,10 @@
 If you're like me, learning a languag  requires ***brutal*** repetition, reiteration, and slow pronounciation. I created Atlas Lingua to do just this: take my time, practice my pronounciation, and utilize Deepgram's STT/TTS/multi-language/topic detection/and summarization capabilities. 
 
 
+<img width="1478" height="788" alt="Screenshot 2026-03-26 at 11 03 17 AM" src="https://github.com/user-attachments/assets/dee21419-4087-48e9-a4ba-221ae236f0a6" />
+
+<img width="1464" height="787" alt="Screenshot 2026-03-26 at 11 04 43 AM" src="https://github.com/user-attachments/assets/82322203-3ad6-420c-858c-4a98ec128b39" />
+
 # Atlas Lingua Demo
 
 Atlas Lingua Demo is a turn-based interactive language tutor built with **FastAPI**, a lightweight browser frontend, **Deepgram** speech/language APIs, and **OpenAI** for tutor/translation generation.
