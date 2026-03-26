@@ -1,4 +1,7 @@
-If you're like me, learning a languag  requires ***brutal*** repetition, reiteration, and slow pronounciation. I created Atlas Lingua to do just this: take my time, practice my pronounciation, and utilize Deepgram's STT/TTS/multi-language/topic detection/and summarization capabilities. 
+# Atlas Lingua with Deepgram :smirk: :sparkles:
+
+
+If you're like me, learning a languag  requires ***brutal*** repetition, reiteration, and slow pronounciation. I created Atlas Lingua to do just this: take my time, practice my pronounciation, and utilize ***Deepgram's STT/TTS/multi-language/topic detection/and summarization capabilities*** . 
 
 
 <img width="1478" height="788" alt="Screenshot 2026-03-26 at 11 03 17 AM" src="https://github.com/user-attachments/assets/dee21419-4087-48e9-a4ba-221ae236f0a6" />
