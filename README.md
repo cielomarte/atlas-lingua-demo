@@ -57,9 +57,9 @@ python -m venv .venv
 source .venv/bin/activate
 pip install -e ".[dev]"
 python run.py
+```
 
-
-## Core features
+### Core features
 
 - **Language selection**
   - Choose from supported target languages mapped to Deepgram Aura voices.
@@ -98,7 +98,7 @@ python run.py
 
 ---
 
-## System architecture
+### System architecture
 <img width="1779" height="326" alt="mermaid-diagram" src="https://github.com/user-attachments/assets/af8e295f-9164-4b24-917f-92972c32d2b4" />
 
 ### Frontend
@@ -135,7 +135,7 @@ The project uses:
 
 ---
 
-## End-to-end workflow
+### End-to-end workflow
 
 This is the current runtime workflow from start to finish.
 
@@ -207,7 +207,7 @@ The user sees:
 
 ---
 
-## Why the app uses request/response APIs instead of live WebSocket streaming
+### Why the app uses request/response APIs instead of live WebSocket streaming
 
 Although the project contains a streaming-oriented code path, the primary implementation uses **record → upload → process → return**.
 
@@ -221,7 +221,7 @@ The app is currently optimized around complete recorded turns rather than contin
 
 ---
 
-## File structure
+### File structure
 
 ```text
 atlas_lingua_demo/
@@ -255,9 +255,9 @@ atlas_lingua_demo/
 │           ├── cartographer-1.png
 │           └── cartographer-2.png
 └── tests/
+```
 
-
-In the future, I plan on extending this project by adding: 
+# In the future, I plan on extending this project by adding: 
 - true streaming speech interaction with Flux
 - pronunciation scoring 
 - adaptive tutoring difficulty
